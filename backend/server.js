@@ -7,11 +7,13 @@ import messageroute from "./routes/message.route.js"
 import userToGet from "./routes/user.route.js"
 import connectToMongoDB from "./db/ConnectToMongo.js";
 
+import { app, server } from "./socket/socket.js";
+
 dotenv.config()
 
 const PORT = process.env.PORT || 5000
 
-const app = express();
+
 app.use(cookieParser());
 app.use(express.json());
 app.use("/api/auth",authroutes);
@@ -20,7 +22,7 @@ app.use("/api/auth",authroutes);
 app.use("/api/messages",messageroute)
 app.use("/api",userToGet)
 
-app.listen(PORT,()=>{
+server.listen(PORT,()=>{
     
     log(`server started at port : ${PORT}`)
 

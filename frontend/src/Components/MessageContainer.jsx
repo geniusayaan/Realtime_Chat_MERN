@@ -1,21 +1,35 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Messages from './Messages'
 import MessagesInput from './MessagesInput'
-
-
-
+import useConversation from '../zustand/useConversation'
+import Backbutton from './Backbutton'
+import { useSocketContext } from "../context/Socketcontext";
 const MessageContainer = () => {
-  const ischatselected = false;
+  const {selectedConversation,setSelectedConversation} = useConversation();
+
+  const {onlineUsers} = useSocketContext();
+
+  const isonline = onlineUsers.includes(selectedConversation?._id)
+ 
+
+  useEffect(()=>{
+    return () => setSelectedConversation(null)
+    
+  },[setSelectedConversation])
   return (
     <div className=' con h-full border-yellow-400   md:min-w-[450px] flex  flex-col'>
       
       {
        
-       ischatselected ? nochatseleted() : (
+       !selectedConversation ? nochatseleted() : (
        <>
-        <div className='bg-slate-500 px-2 flex items-center justify-center py-2'>
+        <div className='bg-slate-500  flex items-center justify-between px-9 py-2'>
+          <div>
         <span className='label-text text-lg'>To: </span>
-        <span className='text-gray-400 font-bold'>Ayaan Mehdi</span>
+        <span className='text-gray-400 font-bold'> {" "}{ selectedConversation.fullname}</span>
+        <div className='text-[12px] text-center'>{isonline?<span>online</span>:""}</div>
+        </div>
+        <Backbutton></Backbutton>
       </div>
 
       

@@ -1,57 +1,38 @@
-import React from 'react'
+import React from 'react';
+import { useAuthContext } from "../context/AuthContext";
+import useConversation from '../zustand/useConversation';
 
-const Message = () => {
-  return (
+const Message = ({ message }) => {
     
+  const { authUser } = useAuthContext();
+  const { selectedConversation } = useConversation();
   
-        <div className='chat chat-end'>
-    <div className='chat-image  avatar'>
+  const chatFromMe = message.senderID === authUser._id;
+  const chatClassName = chatFromMe ? "chat-end" : "chat-start";
+  const profilePic = chatFromMe ? authUser.profilepic : selectedConversation?.profilepic;
+  const chatBubbleBg = chatFromMe ? "bg-blue-500" :"bg-gray-500";
+
+ 
+
+  return (
+    <>
+    
+    <div className={`chat ${chatClassName}`}>
+      <div className='chat-image avatar'>
         <div className='w-8 rounded-full select-none'>
-        <img src="/bg.png" alt="user avatar" className='w-full'/>
+          <img src={profilePic} alt="user avatar" className='w-full' />
         </div>
       </div>
-      <div className={`chat-bubble text-white bg-blue-500`}>
-    Hi! what is going
+      <div className={`chat-bubble text-white ${chatBubbleBg}`}>
+        {message.message}
+       
       </div>
       <div className='text-gray-400 text-[12px] select-none'>
-        12:24 PM
+       
       </div>
     </div>
-      
-       
-  )
-}
+    </>
+  );
+};
 
-export default Message
-
-
-//starter code for this file
-
-/*
-import React from 'react'
-
-const Message = () => {
-  return (
-    
-  
-        <div className='chat chat-end'>
-    <div className='chat-image  avatar'>
-        <div className='w-8 rounded-full'>
-        <img src="/bg.png" alt="user avatar" className='w-full'/>
-        </div>
-      </div>
-      <div className={`chat-bubble text-white bg-blue-500`}>
-    Hi! what is going
-      </div>
-      <div className='text-gray-400 text-[12px]'>
-        12:24 PM
-      </div>
-    </div>
-      
-       
-  )
-}
-
-export default Message
-
-*/
+export default Message;
