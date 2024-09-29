@@ -1,20 +1,35 @@
 import React from 'react'
+import useConversation from '../zustand/useConversation'
+import { useSocketContext } from "../context/Socketcontext";
+const Conversations = (props) => {
+const {conversationt,lastidx,emoji} = props
+const {selectedConversation,setSelectedConversation} = useConversation();
 
-const Conversations = () => {
+const isSeleted = selectedConversation?._id === conversationt._id;
+
+const {onlineUsers} = useSocketContext();
+
+ const isonline = onlineUsers.includes(conversationt._id)
+
+
   return (
     <>
-    <div className='flex mt-3 mx-3 w-full items-center justify-center gap-5'>
-      <div className='avatar w-6 h-6'>
-        <img src="/bg.png" alt="user avatar" className='w-full h-full rounded-full'/>
-      </div>
+    <div className={`flex mt-3 p-4 hover:bg-green-300 cursor-pointer  w-full items-center justify-start gap-2 rounded-lg ${isSeleted ? "bg-green-300":""}`} onClick={() => setSelectedConversation(conversationt)}>
+      <div className={`avatar w-6 h-6 ${isonline?"online":""}`}>
+        <img src={conversationt.profilepic} alt="user avatar" className='w-full h-full rounded-full'/>
+      </div>  
       <div>
-        <h2 className='font-bold text-gray-400'>Ayaan mehdi</h2>
+        <h2 className='font-bold text-gray-400'>{conversationt.fullname}</h2>
       </div>
-      <div>⚽</div>
+      <div>{emoji}</div>
     </div>
-    <div className='divider h-[0.1px] bg-gray-500'></div>
+    {!lastidx&&<div className='divider h-[0.1px] bg-gray-500'></div>}
+    
     </>
+    
+    
   )
+   
 }
 
 export default Conversations

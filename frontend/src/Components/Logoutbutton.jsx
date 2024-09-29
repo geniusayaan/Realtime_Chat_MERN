@@ -5,7 +5,7 @@ const Logoutbutton = () => {
   const { logout, loading } = useLogout();
   return (
     <>
-      <div className="flex items-end justify-start p-3 h-80">
+      <div className="flex items-end justify-start p-3 ">
         {loading ? (
           <span className="loading loading-spinner" />
         ) : (

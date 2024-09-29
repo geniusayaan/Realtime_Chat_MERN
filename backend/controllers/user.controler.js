@@ -10,7 +10,7 @@ export const userForSidebar = async (req,res)=>{
 
      } catch (error) {
         console.log("internal d error:",error.message);
-        res.send("internal d error").status(500);
+        res.json({message:"internal d error"}).status(500);
      }
 }
 

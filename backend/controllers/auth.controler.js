@@ -15,9 +15,9 @@ try{
         const user = await User.findOne({username})
     
         if(user){
-            return res.status(400).json({"message":"user already exists"})
+            return res.status(400).json({error:"username already exists"})
         }
-    
+        
         //https://avatar.iran.liara.run/public/boy?username=${username}
         
 
@@ -25,6 +25,7 @@ try{
     const boypic = `https://avatar.iran.liara.run/public/boy?username=${username}`
     
     const girlpic = `https://avatar.iran.liara.run/public/girl?username=${username}`
+
     const saltRounds = 10;
  const hashedPassword = await bcrypt.hash(password, saltRounds);
     const newUser = new User({
@@ -58,7 +59,7 @@ export const login = async (req,res,next)=>{
    try {
     const {username,password} = req.body;
 
-    console.log("---------- "+ username)
+  
     
     const user = await User.findOne({username});
 
@@ -73,8 +74,9 @@ export const login = async (req,res,next)=>{
     const ispassworcorrect = await bcrypt.compare(password,user?.password || "")
 
     if( !ispassworcorrect){
-        return res.status(400).json({error:"invalid   password"})
+        return res.status(400).json({error:"invalid password"})
     }
+    
 generatejwtandsetcokie(user._id,res)
 
 res.status(200).json({
