@@ -39,7 +39,12 @@ try{
    if(newUser){
     generatejwtandsetcokie(newUser._id,res)
     await newUser.save()
-    return res.status(201).json({result:"true",message:"user created"});
+    return res.status(201).json({
+        _id:user._id,
+        username:newUser.username,
+        fullname:newUser.fullname,
+        profilepic:newUser.profilepic
+    });
    }else{
     return res.status(200).json({result:"false",message:"user not created"});
 

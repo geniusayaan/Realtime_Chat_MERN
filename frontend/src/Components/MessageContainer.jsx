@@ -56,7 +56,7 @@ const nochatseleted = ()=>{
   return(
   <>
    <div className='flex h-full items-center justify-center flex-col'>
-    <h1 className='text-2xl text-white'>Welcome 👏 Ayaan mehdi ❄️
+    <h1 className='text-2xl text-white'>Welcome 👏 shakir sajad ❄️
     
     </h1>
     <span className='text-xl'>Select a chat to start</span>
