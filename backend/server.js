@@ -22,13 +22,13 @@ app.use("/api", userToGet);
 
 
 
-// // Serve static files from the 'dist' folder (where the built React app is located)
-// app.use(express.static(path.join(__dirname, 'frontend', 'dist')));
+// Serve static files from the 'dist' folder (where the built React app is located)
+app.use(express.static(path.join(__dirname, 'frontend', 'dist')));
 
-// // Fallback to index.html for client-side routing
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'frontend', 'dist', 'index.html'));
-// });
+// Fallback to index.html for client-side routing
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend', 'dist', 'index.html'));
+});
 
 
 
