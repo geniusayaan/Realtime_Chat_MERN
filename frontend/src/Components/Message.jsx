@@ -7,9 +7,9 @@ const Message = ({ message }) => {
   const { authUser } = useAuthContext();
   const { selectedConversation } = useConversation();
   
-  const chatFromMe = message.senderID === authUser._id;
+  const chatFromMe = message.senderID === authUser.data._id;
   const chatClassName = chatFromMe ? "chat-end" : "chat-start";
-  const profilePic = chatFromMe ? authUser.profilepic : selectedConversation?.profilepic;
+  const profilePic = chatFromMe ? authUser.data.profilepic : selectedConversation?.profilepic;
   const chatBubbleBg = chatFromMe ? "bg-blue-500" :"bg-gray-500";
 
  

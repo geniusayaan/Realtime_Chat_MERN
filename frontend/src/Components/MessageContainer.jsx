@@ -4,6 +4,7 @@ import MessagesInput from './MessagesInput'
 import useConversation from '../zustand/useConversation'
 import Backbutton from './Backbutton'
 import { useSocketContext } from "../context/Socketcontext";
+import { Authcontext, useAuthContext } from '../context/AuthContext'
 const MessageContainer = () => {
   const {selectedConversation,setSelectedConversation} = useConversation();
 
@@ -53,10 +54,14 @@ export default MessageContainer
 
 
 const nochatseleted = ()=>{
+  const {authUser} = useAuthContext()
+
+ 
+
   return(
   <>
    <div className='flex h-full items-center justify-center flex-col'>
-    <h1 className='text-2xl text-white'>Welcome 👏 shakir sajad ❄️
+    <h1 className='text-2xl text-white'>Welcome 👏 {authUser.data.username} ❄️
     
     </h1>
     <span className='text-xl'>Select a chat to start</span>

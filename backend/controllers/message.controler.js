@@ -14,11 +14,6 @@ export const sendMessage = async (req, res) => {
 
     const senderID = req.user._id;
 
-    // console.log(req.user);
-
-    //   console.log("bdfhvhjfgf "+senderID)
-    //   console.log(senderID)
-    //   console.log("\n\n\n")
 
     let conversation = await Conversation.findOne({
       participants: { $all: [senderID, recivedID] },

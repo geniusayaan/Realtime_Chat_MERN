@@ -20,15 +20,15 @@ const SideBar = () => {
  <Logoutbutton/>
 
 
-<img src={authUser.profilepic}  className="w-[40px]" alt="" />
+<img src={authUser.data.profilepic}  className="w-[40px]" alt="" />
 
 
 <div>
 
-  <p> {authUser.fullname}
+  <p> {authUser.data.fullname}
     </p> 
 
-    <p className='text-[12px]'>@{authUser.username}</p>
+    <p className='text-[12px]'>@{authUser.data.username}</p>
 </div>
 
 

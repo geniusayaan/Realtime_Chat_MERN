@@ -16,6 +16,10 @@ if(!message){
 
 await sendMessage(message) 
 
+const audio = new Audio("/tune.mp3")
+
+audio.play()
+
 setmessage("")
 
   }

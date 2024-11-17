@@ -11,9 +11,6 @@ import { app, server } from "./socket/socket.js";
 
 dotenv.config()
 
-const __dirname = path.resolve()
-
-
 
 const PORT = process.env.PORT || 5000
 
@@ -22,11 +19,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use("/api/auth",authroutes);
 
-app.use(express.static(path.join(__dirname,"/frontend/dist")))
 
-app.use("*",(req,res)=>{
- res.sendFile(path.join(__dirname,"frontend","dist","index.html"))
-})
 
 app.use("/api/messages",messageroute)
 app.use("/api",userToGet)

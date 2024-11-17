@@ -39,12 +39,11 @@ try{
    if(newUser){
     generatejwtandsetcokie(newUser._id,res)
     await newUser.save()
-    return res.status(201).json({
-        _id:user._id,
-        username:newUser.username,
-        fullname:newUser.fullname,
-        profilepic:newUser.profilepic
-    });
+
+    newUser.password = undefined
+
+    return res.status(201).json({result:"true",message:"user created", data:newUser});
+     
    }else{
     return res.status(200).json({result:"false",message:"user not created"});
 
@@ -84,12 +83,11 @@ export const login = async (req,res,next)=>{
     
 generatejwtandsetcokie(user._id,res)
 
-res.status(200).json({
-    _id:user._id,
-    fullname:user.fullname,
-    username:user.username,
-    profilepic:user.profilepic
-})
+user.password = undefined
+
+return res.status(201).json({result:"true",message:"user logged in", data:user});
+
+
    } catch (error) {
     console.log("error is",error.message)
    }
