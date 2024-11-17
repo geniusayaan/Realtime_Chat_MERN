@@ -8,7 +8,7 @@ const token =jwt.sign({userID},process.env.JWT_SECRET,{
     maxAge: 30*24*60*60*1000,
     httpOnly:true, // prevent xxs atack,
     sameSite:"strict",
-    secure:process.env.NODE_ENV !== "development"
+    secure:true
  })
 }
 
