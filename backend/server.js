@@ -22,6 +22,9 @@ app.use("/api", userToGet);
 
 
 
+const __dirname = path.resolve()
+
+
 // Serve static files from the 'dist' folder (where the built React app is located)
 app.use(express.static(path.join(__dirname, 'frontend', 'dist')));
 
