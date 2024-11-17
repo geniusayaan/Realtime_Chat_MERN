@@ -26,12 +26,14 @@ export const SocketcontextProvider = ({ children }) => {
       })
 
       setsocket(socket);
+      
     } else {
       if (socket) {
         socket.close();
+        
       }
     }
-  }, [authUser.data]);
+  }, [authUser]);
 
   return (
     <Socketcontext.Provider value={{ socket, onlineUsers }}>
