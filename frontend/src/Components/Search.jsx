@@ -29,8 +29,8 @@ const [search,setsearch] = useState()
   return (
     <div className='mb-4'>
       <form className='flex items-center gap-2' onSubmit={handlesubmit}>
-      <input type="text" placeholder='Search Here' className='input input-bordered rounded-2xl' value={search} onChange={(e)=>setsearch(e.target.value)}/>
-      <button className=' btn btn-circle bg-sky-500 text-white '><IoSearch className='text-[20px]'/></button>
+      <input type="text" placeholder='Search Here' className='input input-bordered rounded-2xl bg-black' value={search} onChange={(e)=>setsearch(e.target.value)}/>
+      <button className=' btn btn-circle bg-green-500 text-white '><IoSearch className='text-[20px]'/></button>
       </form>
     </div>
   )

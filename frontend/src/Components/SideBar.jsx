@@ -15,7 +15,7 @@ const SideBar = () => {
    <Conversation></Conversation> 
 
 
-<div className='flex w-full items-center  bg-red-500 rounded m-1  gap-2'>
+<div className='flex w-full items-center  bg-black hover:bg-red-600 rounded m-1  gap-2'>
 
  <Logoutbutton/>
 

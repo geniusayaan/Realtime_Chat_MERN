@@ -16,9 +16,9 @@ const Login = () => {
 
   return (
     <div className='flex flex-col items-center justify-center min-w-96 mx-auto'>
-<div className='w-full p-6  bg-gray-600 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-20'>
+<div className='w-full p-6  bg-gray-600 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-1 shadow-2xl'>
 
-<h1 className='text-3xl select-none font-semibold text-center text-white'>Login <span className='text-blue-500'>Chat App</span></h1>
+<h1 className='text-3xl select-none font-semibold text-center text-white'>Login to <span className='text-red-500'>Chat App</span></h1>
 
 <form className='mt-2' onSubmit={handleLogin}>
 <div>
@@ -40,7 +40,7 @@ const Login = () => {
   </Link>
 
   <div className='mt-2'>
-    <button className='btn btn-block btn-sm mt-2 bg-blue-700 hover:bg-blue-600 border-none'>{loading?(<span className='loading loading-spinner'/>):"Login"}</button>
+    <button className='btn btn-block btn-sm mt-2 bg-blue-400 hover:bg-blue-600 text-black border-none'>{loading?(<span className='loading loading-spinner'/>):"Login"}</button>
   </div>
 </form>
 

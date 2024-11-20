@@ -19,7 +19,7 @@ const {onlineUsers} = useSocketContext();
         <img src={conversationt.profilepic} alt="user avatar" className='w-full h-full rounded-full'/>
       </div>  
       <div>
-        <h2 className='font-bold text-gray-400'>{conversationt.fullname}</h2>
+        <h2 className='font-bold text-xl text-white'>{conversationt.fullname}</h2>
       </div>
       <div>{emoji}</div>
     </div>

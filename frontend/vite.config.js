@@ -8,7 +8,8 @@ export default defineConfig({
     port:3000,
     proxy:{
       "/api":{
-        target:"https://shakir-chat-app.onrender.com",
+        target:"http://localhost:8000",
+        //https://shakir-chat-app.onrender.com
         changeOrigin: true,
         secure: false, // Ignore SSL certificate errors
       }
